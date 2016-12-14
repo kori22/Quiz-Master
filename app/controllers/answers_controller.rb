@@ -51,11 +51,11 @@ class AnswersController < ApplicationController
 					if is_number?(question.answer)
 						is_correct = (question.answer.to_i == answer["answer"].to_i)
 					else
-						is_correct = (question.answer.downcase == answer["answer"].to_i.humanize.downcase)
+						is_correct = (question.answer.downcase == answer["answer"].to_i.humanize.gsub('-', ' ').downcase)
 					end
 				else
 					if is_number?(question.answer)
-						is_correct = (question.answer.to_i.humanize.downcase == answer["answer"].downcase)
+						is_correct = (question.answer.to_i.humanize.gsub('-', ' ').downcase == answer["answer"].downcase)
 					else
 						is_correct = (question.answer.downcase == answer["answer"].downcase)
 					end
