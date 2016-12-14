@@ -1,0 +1,43 @@
+<div class="am-left-sidebar">
+    <div class="content">
+      <div class="am-logo"></div>
+      <ul class="sidebar-elements">
+        <li>
+          <%= link_to subjects_path do %>
+            <i class="ion-ios-bookmarks-outline l-s-i"></i><span><%= t(:subject) %></span>
+          <% end %>
+        </li>
+
+        <% if @subjects.present? %>
+          <li class="parent"><a href="#"><i class="ion-ios-paper-outline l-s-i"></i><span><%= t(:question) %></span></a>
+            <ul class="sub-menu">
+              <% @subjects.each do |sub| %>
+                <li>
+                  <%= link_to subject_questions_path(sub.id) do %>
+                    <%= sub.name %>
+                  <% end %>
+                </li>
+              <% end %>
+              
+            </ul>
+          </li>
+
+
+          <li class="parent"><a href="#"><i class="ion-ios-compose-outline l-s-i"></i><span><%= t(:answer) %></span></a>
+            <ul class="sub-menu">
+              <% @subjects.each do |sub| %>
+                <li>
+                  <%= link_to subject_answers_path(sub.id) do %>
+                    <%= sub.name %>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </li>
+        <% end %>
+        
+        
+      </ul>
+      <!--Sidebar bottom content-->
+    </div>
+</div>

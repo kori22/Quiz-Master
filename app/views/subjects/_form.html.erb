@@ -1,0 +1,71 @@
+<div class="main-content">
+	<div class="row">
+	    <div class="col-sm-12">
+	      <div class="panel panel-default">
+	        <div class="panel-heading">
+	          <h3><%= t(:new_subject) %></h3>
+	          <% if flash[:error].present? %>
+				  <div class="alert alert-danger alert-block">
+				    <a class="close" data-dismiss="alert" href="javascript:void(0)">×</a>
+				    <h4 class="alert-heading">Error!</h4>
+				    <ul>
+				    	<% if flash[:error].class == 'Array' %>
+						    <% flash[:error].each do |message| %>
+						    	<li><%= message %></li>
+						    <% end %>
+						<% else %>
+							<li><%= flash[:error].first %></li>
+						<% end %>
+				    </ul>
+				  </div>
+			  <% end %>
+
+	        </div>
+	        <div class="panel-body">
+	          <%= form_for subject do |f| %>
+	          	<div class="col-sm-12">
+		            <div class="form-group">
+		              <label><%= t(:code) %></label>
+		              <%= f.text_field :code, class: "form-control", placeholder: t(:code), required: true %>
+		            </div>
+
+		            <div class="form-group">
+		              <label><%= t(:name) %></label>
+		              <%= f.text_field :name, class: "form-control", placeholder: t(:name), required: true %>
+		            </div>
+
+		            <div class="form-group">
+		              <label><%= t(:description) %></label>
+		              <%= f.text_area :description, class: "form-control", placeholder: t(:description), required: true %>
+		            </div>
+
+		            <div class="form-group">
+		              <label><%= t(:duration) %></label>
+		              
+		              <div class="input-group xs-mb-15">
+                        <%= f.text_field :duration, class: "form-control", placeholder: t(:duration), required: true %>
+                        <span class="input-group-addon">Minute</span>
+                      </div>
+		            </div>
+
+		            <div class="form-group">
+		              <label><%= t(:total_question_take) %></label>
+		              <div class="input-group xs-mb-15">
+                        <%= f.text_field :tot_question, class: "form-control", placeholder: t(:total_question_take), required: true %>
+                        <span class="input-group-addon">Question/Take</span>
+                      </div>
+		            </div>
+		            
+		            <div class="spacer text-right">
+		              <%= f.submit t(:submit), class: "btn btn-space btn-primary" %>
+		              <button class="btn btn-space btn-default">Cancel</button>
+		            </div>
+		        </div>
+	          <% end %>
+	        </div>
+	      </div>
+	    </div>
+	    
+	</div>
+</div>
+

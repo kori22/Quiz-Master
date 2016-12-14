@@ -1,0 +1,16 @@
+<% if questions.present? %>
+	<% questions.each_with_index do |sub, i| %>
+	  <tr>
+	  	<td><%= (i + 1) %></td>
+		<td><%= sub.question.html_safe rescue '' %></td>
+	    <td><%= sub.answer rescue '' %></td>
+	    <td>
+	    	<%= link_to t(:edit), edit_subject_question_path(params[:subject_id], sub.id) %> | <%= link_to t(:delete), subject_question_path(params[:subject_id], sub.id), method: "DELETE" %>
+	    </td>
+	  </tr>
+	<% end %>
+<% else %>
+	<tr>
+		<td colspan="4"><%= t(:no_data) %></td>
+	</tr>
+<% end %>

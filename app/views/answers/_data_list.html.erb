@@ -1,0 +1,17 @@
+<% if answers.present? %>
+	<% answers.each_with_index do |sub, i| %>
+	  <tr>
+	  	<td><%= (i + 1) %></td>
+		<td><%= sub.user.username rescue '' %></td>
+	    <td><%= sub.subject.name rescue '' %></td>
+	    <td><%= sub.score rescue '' %></td>
+	    <td>
+	    	<%= link_to t(:show), subject_answer_path(params[:subject_id], sub.id) %>
+	    </td>
+	  </tr>
+	<% end %>
+<% else %>
+	<tr>
+		<td colspan="5"><%= t(:no_data) %></td>
+	</tr>
+<% end %>

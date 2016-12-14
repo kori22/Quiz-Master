@@ -1,0 +1,19 @@
+<% if subjects.present? %>
+	<% subjects.each_with_index do |sub, i| %>
+	  <tr>
+	  	<td><%= (i + 1) %></td>
+		<td><%= sub.code rescue '' %></td>
+	    <td><%= sub.name rescue '' %></td>
+	    <td><%= sub.duration %></td>
+	    <td><%= sub.tot_question %></td>
+	    <td><%= sub.description rescue '' %></td>
+	    <td>
+	    	<%= link_to t(:edit), edit_subject_path(sub.id) %> | <%= link_to t(:delete), subject_path(sub.id), method: "DELETE" %>
+	    </td>
+	  </tr>
+	<% end %>
+<% else %>
+	<tr>
+		<td colspan="5"><%= t(:no_data) %></td>
+	</tr>
+<% end %>

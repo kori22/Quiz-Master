@@ -1,0 +1,43 @@
+
+<div class="am-content">
+  <div class="main-content">
+    <div class="login-container">
+      <div class="panel panel-default">
+        <div class="panel-heading"><span>Quiz Master</span></div>
+        <div class="panel-body">
+          <% if flash.any? %>
+            <div id="error_explanation">
+              
+              <%- flash.each do |name, msg| -%>
+                <%= content_tag :h4, msg, id: "flash_#{name}", class: "flash_content" if msg.is_a?(String) %>
+              <%- end -%> 
+            </div>
+          <% end %>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "form-horizontal"}) do |f| %>
+            <div class="login-form">
+              <div class="form-group">
+                <div class="input-group"><span class="input-group-addon"><i class="icon s7-user"></i></span>
+                  
+                  <%= f.text_field :email, placeholder: "Email", autocomplate: "off", class: "form-control", autofocus: true %>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group"><span class="input-group-addon"><i class="icon s7-lock"></i></span>
+                  
+                  <%= f.password_field :password, placeholder: "Password", autocomplate: "off", class: "form-control", autofocus: true %>
+                </div>
+              </div>
+              <div class="form-group login-submit">
+                <button data-dismiss="modal" type="submit" class="btn btn-primary btn-lg">Log me in</button>
+              </div>
+              <div class="form-group footer row">
+                <div class="col-xs-6"><a href="#">Forgot Password?</a></div>
+                
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

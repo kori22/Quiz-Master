@@ -1,0 +1,49 @@
+<div class="main-content">
+  <div class="row wizard-row">
+    <div class="col-md-12 fuelux">
+      	<div class="block-wizard panel panel-default">
+      		<%= form_tag("/subjects/#{params[:subject_id]}/answers") do %>
+
+		        <div id="wizard1" class="wizard wizard-ux">
+		          <ul class="steps">
+		          	<% @questions.each_with_index do |q, i| %>
+			            <li data-step="<%= (i + 1) %>" class="<%= (i == 0 ? 'active' : '') %>">
+			            	Q <%= (i + 1) %><span class="chevron"></span>
+			            </li>
+			            
+			        <% end %>
+		          </ul>
+		          <div class="actions">
+		            <button type="button" class="btn btn-xs btn-prev btn-default"><i class="icon s7-angle-left"></i>Prev</button>
+		            <button type="button" data-last="Submit" class="btn btn-xs btn-next btn-default" onclick="cek_button();">Next<i class="icon s7-angle-right"></i></button>
+		          </div>
+		          <div class="step-content">
+
+		          	<% @questions.each_with_index do |q, i| %>
+			            <div data-step="<%= (i + 1) %>" class="step-pane <%= (i == 0 ? 'active' : '') %>">
+			              	<div class="col-sm-12">
+					            <div class="form-group">
+					              <label><%= q.question.html_safe %></label>
+					              <%= hidden_field_tag :question_id, q.id, name: "answer_detail[][question_id]" %>
+					              <%= text_field_tag :answer, '', name: "answer_detail[][answer]" , class: "form-control", placeholder: t(:your_answer) %>
+					            </div>
+					        </div>
+			            </div>
+		            <% end %>
+
+
+
+		          </div>
+		        </div>
+
+		    <% end %>
+      	</div>
+    </div>
+  </div>
+</div>
+
+
+
+<script type="text/javascript">
+	
+</script>
